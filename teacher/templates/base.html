@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title> {{ title }}</title>
+</head>
+<body>
+<h1>{{ title }}</h1>
+<nav>
+    {% if current_user.is_authenticated %}
+    <ul>
+        <li>Hello, {{current_user.login}}!</li>
+        <li><a href="{{ url_for('logout') }}">Logout</a></li>
+        <br>
+        <li><a href="{{ url_for('home_page') }}">Home</a></li>
+        <li><a href="{{ url_for('create') }}">Add word</a></li>
+        <li><a href="{{ url_for('read') }}">Read words</a></li>
+
+
+
+
+    </ul>
+    {% else %}
+
+        <li><a href="{{ url_for('registration') }}">Registration</a></li>
+        <li><a href="{{ url_for('login') }}">Login</a></li>
+        <br>
+        <li><a href="{{ url_for('home_page') }}">Home</a></li>
+        <li><a href="{{ url_for('create') }}">Add word</a></li>
+        <li><a href="{{ url_for('read') }}">Read words</a></li>
+        <br>
+    {% endif %}
+</nav>
+
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+            {{ message }}
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+
+
+{% block content %}
+{% endblock %}
+
+</body>
+</html>

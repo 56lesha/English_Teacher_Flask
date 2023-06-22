@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+<form method="POST" action="{{url_for('update',id=id)}}">
+  {{ form.hidden_tag() }}
+
+<!--  {{ form.id.label() }}-->
+<!--  {{ form.id(placeholder="enter id")}}-->
+  <br>
+  {{ form.new_word.label() }}
+  {{ form.new_word(placeholder="enter new word")}}
+  <br>
+  {{ form.new_translation.label() }}
+  {{ form.new_translation(placeholder="enter new translation")}}
+  <br>
+  {{ form.submit() }}
+
+</form>
+
+{% endblock %}

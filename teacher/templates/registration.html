@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<form action = "{{ url_for('registration') }}" method="POST">
+  {{ form.hidden_tag() }}
+
+  {{ form.username.label() }}
+  {{ form.username(placeholder="Enter username:") }}
+  <br>
+  {{ form.email_adress.label() }}
+  {{ form.email_adress(placeholder="Enter email: ")}}
+  <br>
+  {{ form.password_1.label() }}
+  {{ form.password_1(placeholder="Enter password: ")}}
+  <br>
+  {{ form.password_2.label() }}
+  {{ form.password_2(placeholder="Confirm password: ")}}
+  <br>
+  <a href="{{url_for('login')}}">Already have an account?</a>
+  <br>
+  {{ form.submit()}}
+
+</form>
+
+
+
+
+
+{% endblock %}
