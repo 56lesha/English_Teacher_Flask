@@ -1,28 +1,40 @@
 {% extends "base.html" %}
 
 {% block content %}
-<form action = "{{ url_for('registration') }}" method="POST">
-  {{ form.hidden_tag() }}
+<body class="text-center">
+    <div class="container">
+        <form action = "{{ url_for('registration') }}" method="POST" class="form-signin">
+          {{ form.hidden_tag() }}
+          <h1 class="h3 mb-3 font-weight-normal">
+              Please Register
+          </h1>
+            <div class="mb-3">
+              {{ form.username.label() }}
+              {{ form.username(class="form-control", placeholder="Enter username:") }}
+            </div>
+          <br>
+            <div class="mb-3">
+              {{ form.email_adress.label() }}
+              {{ form.email_adress(class="form-control", placeholder="Enter email: ")}}
+            </div>
+          <br>
+            <div class="mb-3">
+              {{ form.password_1.label() }}
+              {{ form.password_1(class="form-control", placeholder="Enter password: ")}}
+            </div>
+          <br>
+            <div class="mb-3">
+              {{ form.password_2.label() }}
+              {{ form.password_2(class="form-control", placeholder="Confirm password: ")}}
+            </div>
+          <br>
+            <a href="{{url_for('login')}}">Already have an account?</a>
+          <br>
+          {{ form.submit(class="btn btn-lg btn-block btn-primary")}}
 
-  {{ form.username.label() }}
-  {{ form.username(placeholder="Enter username:") }}
-  <br>
-  {{ form.email_adress.label() }}
-  {{ form.email_adress(placeholder="Enter email: ")}}
-  <br>
-  {{ form.password_1.label() }}
-  {{ form.password_1(placeholder="Enter password: ")}}
-  <br>
-  {{ form.password_2.label() }}
-  {{ form.password_2(placeholder="Confirm password: ")}}
-  <br>
-  <a href="{{url_for('login')}}">Already have an account?</a>
-  <br>
-  {{ form.submit()}}
-
-</form>
-
-
+        </form>
+    </div>
+</body>
 
 
 

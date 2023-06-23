@@ -1,22 +1,33 @@
 {% extends "base.html" %}
 {% block content %}
 {% if current_user.is_authenticated %}
+<body class="text-left" >
+    <div>
 
-    <form method="POST" action = "{{url_for('create')}}">
-        {{ form.hidden_tag() }}
+        <form method="POST" action = "{{url_for('create')}}">
+            {{ form.hidden_tag() }}
+            <h1 class="h3 mb-3 font-weight-normal">
+                Добавить слово
+            </h1>
+            <div class="mb-3">
+                {{ form.word.label() }}
+                {{ form.word(class="form-control", placeholder = "Enter word on English") }}
+            </div>
+            <br>
+            <div class="mb-3">
+                {{ form.translation.label() }}
+                {{ form.translation(class="form-control", placeholder = "Enter translation") }}
+            </div>
+            <br>
 
-        {{ form.word.label() }}
-        {{ form.word(placeholder = "Enter word on English") }}
-        <br>
-        {{ form.translation.label() }}
-        {{ form.translation(placeholder = "Enter translation") }}
-        <br>
-    <!--    {{ form.user_id.label() }}-->
-    <!--    {{ form.user_id(placeholder = "Enter id of user") }}-->
-    <!--    <br>-->
-        {{ form.submit() }}
+        <!--    {{ form.user_id.label() }}-->
+        <!--    {{ form.user_id(placeholder = "Enter id of user") }}-->
+        <!--    <br>-->
+            {{ form.submit(class="btn btn-lg btn-block btn-primary") }}
 
-    </form>
+        </form>
+    </div>
+</body>
 
 {% else %}
     <p><a href="{{url_for('registration')}}">Register</a> or <a href="{{url_for('login')}}">login</a> to create new words</p>
@@ -24,3 +35,4 @@
 {% endif %}
 
 {% endblock %}
+

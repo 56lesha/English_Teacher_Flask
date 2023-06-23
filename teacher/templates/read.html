@@ -4,14 +4,14 @@
 
 {% if current_user.is_authenticated %}
 <h1>Here is words of the user {{current_user.login}}</h1>
-<table>
+<table class="table table-striped">
     <thead>
     <tr>
-        <th>Id</th>
-        <th>Word</th>
-        <th>Translation</th>
-        <th>Update word</th>
-        <th>Delete Word</th>
+        <th scope="col">Id</th>
+        <th scope="col">Word</th>
+        <th scope="col">Translation</th>
+        <th scope="col">Update word</th>
+        <th scope="col">Delete Word</th>
     </tr>
     </thead>
     <tbody>

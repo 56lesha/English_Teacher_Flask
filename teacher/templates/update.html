@@ -4,8 +4,6 @@
 <form method="POST" action="{{url_for('update',id=id)}}">
   {{ form.hidden_tag() }}
 
-<!--  {{ form.id.label() }}-->
-<!--  {{ form.id(placeholder="enter id")}}-->
   <br>
   {{ form.new_word.label() }}
   {{ form.new_word(placeholder="enter new word")}}
