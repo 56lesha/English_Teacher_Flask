@@ -2,7 +2,7 @@
 
 {% block content %}
 
-{% if current_user.is_authenticated %}
+
 <h1>Here is words of the user {{current_user.login}}</h1>
 <table class="table table-striped">
     <thead>
@@ -15,20 +15,17 @@
     </tr>
     </thead>
     <tbody>
-    {% for word in data %}
+    {% for word in data_words %}
         <tr>
             <td>{{ word.id }}</td>
             <td>{{ word.word }}</td>
             <td>{{ word.translation }}</td>
-            <td><a href="{{url_for('update', id=word.id)}}">Обновить</a></td>
-            <td><a href="{{url_for('delete', id=word.id)}}">Удалить</a></td>
+            <td><a href="{{url_for('update_word', id=word.id, collection_id=collection_id)}}">Обновить</a></td>
+            <td><a href="{{url_for('delete_word', id=word.id, collection_id=collection_id)}}">Удалить</a></td>
         </tr>
     {% endfor %}
     </tbody>
     </table>
-{% else %}
-    <p><a href="{{url_for('registration')}}">Register</a> or <a href="{{url_for('login')}}">login</a> to view your words</p>
-{% endif %}
 
-
+    <a href="{{url_for('create_word', collection_id=collection_id)}}">Add word</a>
 {% endblock %}

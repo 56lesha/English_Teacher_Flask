@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+<form method="POST" action="{{url_for('update_collection', id=id)}}">
+  {{ form.hidden_tag() }}
+
+  <br>
+  {{ form.name.label() }}
+  {{ form.name(placeholder="new name collection", value=collection_to_update.name)}}
+  <br>
+  {{ form.description.label() }}
+  {{ form.description(placeholder="new collection description", value=collection_to_update.description)}}
+  <br>
+  {{ form.submit() }}
+
+</form>
+
+{% endblock %}

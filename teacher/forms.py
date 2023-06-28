@@ -5,18 +5,24 @@ from wtforms.validators import Length, DataRequired, Email, EqualTo, ValidationE
 from teacher.models import User
 
 
-class CreateForm(FlaskForm):
+class CreateCollectionForm(FlaskForm):
+    name = StringField(label="Enter name of collection:")
+    description = StringField(label="Enter description: ")
+    submit = SubmitField(label="Create new word ")
+
+
+class CreateWordForm(FlaskForm):
     word = StringField(label="Enter Word:")
     translation = StringField(label="Enter English Translation: ")
     user_id = StringField(label="Enter user") # Убрать, когда сделаю авторизацию #Почему когда её убираю не работает?
     submit = SubmitField(label="Create new word ")
 
 
-class UpdateForm(FlaskForm):
-    id = IntegerField(label="Enter id of word you want to update") #Почему когда её убираю не работает?
-    new_word = StringField(label="Enter new word: ")
-    new_translation = StringField(label="Enter new translation: ")
-    submit = SubmitField(label="Update word")
+# class UpdateForm(FlaskForm):
+#     id = IntegerField(label="Enter id of word you want to update") #Почему когда её убираю не работает?
+#     new_word = StringField(label="Enter new word: ")
+#     new_translation = StringField(label="Enter new translation: ")
+#     submit = SubmitField(label="Update word")
 
 
 class RegistrationForm(FlaskForm):

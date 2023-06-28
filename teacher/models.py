@@ -19,6 +19,13 @@ class User(db.Model, UserMixin):
     def check_password_correction(self, attempted_password):
         return self.password_hash == attempted_password
 
+class Collection(db.Model):
+    __tablename__ = "collection"
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(70), nullable=False)
+    description = db.Column(db.String(200), nullable=True)
+    user_id = db.Column(db.Integer, ForeignKey("user.id"), nullable=False)
+    user = relationship("User", foreign_keys="Collection.user_id", backref="collections")
 
 
 class Words(db.Model):
@@ -26,8 +33,8 @@ class Words(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     word = db.Column(db.String)
     translation = db.Column(db.String)
-    user_id = db.Column(db.Integer, ForeignKey("user.id"), nullable=False)
-    user = relationship("User", foreign_keys="Words.user_id", backref="words")
+    collection_id = db.Column(db.Integer, ForeignKey("collection.id"), nullable=False)
+    user = relationship("Collection", foreign_keys="Words.collection_id", backref="words")
 
 
 

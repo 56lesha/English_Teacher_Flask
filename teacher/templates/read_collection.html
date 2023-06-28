@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if current_user.is_authenticated %}
+    <h1>Here is collections of the user {{current_user.login}}</h1>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Name of collection</th>
+            <th scope="col">Description</th>
+            <th scope="col">Learning</th>
+            <th scope="col">Update Collection</th>
+            <th scope="col">Delete Collection</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for collection in data %}
+            <tr>
+                <td>{{ collection.id }}</td>
+                <td><a href="{{ url_for('read_word', id=collection.id)}}">{{ collection.name }}</a></td>
+                <td>{{ collection.description }}</td>
+                <td><a href=#>Learn</a></td>
+                <td><a href="{{url_for('update_collection', id=collection.id)}}">Update</a></td>
+                <td><a href="{{ url_for('delete_collection', id=collection.id) }}">Delete</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+        </table>
+
+<p><a href="{{url_for('create_collection')}}">Add collection</a></p>
+{% else %}
+
+<p><a href="{{url_for('registration')}}">Register</a> or <a href="{{url_for('login')}}">login</a> to add your collections new words</p>
+
+{% endif %}
+
+{% endblock %}

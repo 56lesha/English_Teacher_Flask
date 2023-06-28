@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+{% if current_user.is_authenticated %}
+<body class="text-left" >
+    <div>
+
+        <form method="POST" action = "{{url_for('create_collection')}}">
+            {{ form.hidden_tag() }}
+            <h1 class="h3 mb-3 font-weight-normal">
+                Добавить категорию
+            </h1>
+            <div class="mb-3">
+                {{ form.name.label() }}
+                {{ form.name(class="form-control", placeholder = "Enter name of category") }}
+            </div>
+            <br>
+            <div class="mb-3">
+                {{ form.description.label() }}
+                {{ form.description(class="form-control", placeholder = "Enter description") }}
+            </div>
+            <br>
+
+            {{ form.submit(class="btn btn-lg btn-block btn-primary") }}
+
+        </form>
+    </div>
+</body>
+
+{% else %}
+    <p><a href="{{url_for('registration')}}">Register</a> or <a href="{{url_for('login')}}">login</a> to create new words</p>
+
+{% endif %}
+
+{% endblock %}
+

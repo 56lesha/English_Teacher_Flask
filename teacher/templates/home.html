@@ -1,6 +1,13 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Hello, user</h1>
-<p>Сейчас  базе {{ quantity }} слов(а)</p>
+
+<h1>Легко осваивайте сложные предметы с помощью карточек и тестов!</h1>
+{% if current_user.is_authenticated %}
+    <p>Рады вас видеть снова!</p>
+{% else %}
+    <p><a href="{{url_for('registration')}}">Присоединиться бесплатно!</a></p>
+
+
+{% endif %}
 {% endblock %}

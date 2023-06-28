@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+<form method="POST" action="{{url_for('update_word', id=id, collection_id=collection_id)}}">
+  {{ form.hidden_tag() }}
+
+  <br>
+  {{ form.word.label() }}
+  {{ form.word(placeholder="enter new word", value=word_to_update.word)}}
+  <br>
+  {{ form.translation.label() }}
+  {{ form.translation(placeholder="enter new translation", value=word_to_update.translation)}}
+  <br>
+  {{ form.submit() }}
+
+</form>
+
+{% endblock %}

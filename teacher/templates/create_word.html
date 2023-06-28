@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
-{% if current_user.is_authenticated %}
+
 <body class="text-left" >
     <div>
 
-        <form method="POST" action = "{{url_for('create')}}">
+        <form method="POST" action = "{{url_for('create_word', collection_id=collection_id)}}">
             {{ form.hidden_tag() }}
             <h1 class="h3 mb-3 font-weight-normal">
                 Добавить слово
@@ -20,19 +20,13 @@
             </div>
             <br>
 
-        <!--    {{ form.user_id.label() }}-->
-        <!--    {{ form.user_id(placeholder = "Enter id of user") }}-->
-        <!--    <br>-->
             {{ form.submit(class="btn btn-lg btn-block btn-primary") }}
 
         </form>
     </div>
 </body>
 
-{% else %}
-    <p><a href="{{url_for('registration')}}">Register</a> or <a href="{{url_for('login')}}">login</a> to create new words</p>
 
-{% endif %}
 
 {% endblock %}
 
